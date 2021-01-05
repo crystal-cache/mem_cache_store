@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/crystal-cache/memchached_cache.svg?branch=main)](https://travis-ci.org/crystal-cache/memchached_cache)
 
-A cache store implementation that stores data in Memcached.
+A [cache](https://github.com/crystal-cache/cache) store implementation that stores data in Memcached.
 
 ## Installation
 
