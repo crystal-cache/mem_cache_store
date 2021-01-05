@@ -1,6 +1,8 @@
 # Cache::MemcachedStore
 
-A cache store implementation which stores data in Memcached.
+[![Build Status](https://travis-ci.org/crystal-cache/memchached_cache.svg?branch=main)](https://travis-ci.org/crystal-cache/memchached_cache)
+
+A cache store implementation that stores data in Memcached.
 
 ## Installation
 
