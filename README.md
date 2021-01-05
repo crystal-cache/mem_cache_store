@@ -1,6 +1,6 @@
 # Cache::MemcachedStore
 
-[![Build Status](https://travis-ci.org/crystal-cache/memchached_cache.svg?branch=main)](https://travis-ci.org/crystal-cache/memchached_cache)
+[![Build Status](https://travis-ci.org/crystal-cache/memcached_cache.svg?branch=main)](https://travis-ci.org/crystal-cache/memcached_cache)
 [![GitHub release](https://img.shields.io/github/release/crystal-cache/memcached_cache.svg)](https://github.com/crystal-cache/memcached_cache/releases)
 
 A [cache](https://github.com/crystal-cache/cache) store implementation that stores data in Memcached.
