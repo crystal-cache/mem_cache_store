@@ -1,0 +1,17 @@
+name: memcached_cache
+version: 0.1.0
+
+authors:
+  - Anton Maminov <anton.maminov@gmail.com>
+
+dependencies:
+  cache:
+    github: mamantoha/cache
+    version: ~> 0.12.0
+  memcached:
+    github: comandeo/crystal-memcached
+    branch: develop
+
+crystal: => 0.35.1
+
+license: MIT
