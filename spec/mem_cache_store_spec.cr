@@ -1,34 +1,34 @@
 require "./spec_helper"
 
 describe Cache do
-  context Cache::MemcachedStore do
+  context Cache::MemCacheStore do
     Spec.before_each do
       memcached = Memcached::Client.new
       memcached.flush
     end
 
     it "initialize" do
-      store = Cache::MemcachedStore(String, String).new(expires_in: 12.hours)
+      store = Cache::MemCacheStore(String, String).new(expires_in: 12.hours)
 
       store.should be_a(Cache::Store(String, String))
     end
 
     it "initialize with memcached" do
       memcached = Memcached::Client.new(host: "localhost", port: 11211)
-      store = Cache::MemcachedStore(String, String).new(expires_in: 12.hours, cache: memcached)
+      store = Cache::MemCacheStore(String, String).new(expires_in: 12.hours, cache: memcached)
 
       store.should be_a(Cache::Store(String, String))
     end
 
     it "write to cache first time" do
-      store = Cache::MemcachedStore(String, String).new(12.hours)
+      store = Cache::MemCacheStore(String, String).new(12.hours)
 
       value = store.fetch("foo") { "bar" }
       value.should eq("bar")
     end
 
     it "fetch from cache" do
-      store = Cache::MemcachedStore(String, String).new(12.hours)
+      store = Cache::MemCacheStore(String, String).new(12.hours)
 
       value = store.fetch("foo") { "bar" }
       value.should eq("bar")
@@ -39,7 +39,7 @@ describe Cache do
 
     it "fetch from cache with custom Memcached" do
       memcached = Memcached::Client.new(host: "localhost", port: 11211)
-      store = Cache::MemcachedStore(String, String).new(expires_in: 12.hours, cache: memcached)
+      store = Cache::MemCacheStore(String, String).new(expires_in: 12.hours, cache: memcached)
 
       value = store.fetch("foo") { "bar" }
       value.should eq("bar")
@@ -49,7 +49,7 @@ describe Cache do
     end
 
     it "don't fetch from cache if expired" do
-      store = Cache::MemcachedStore(String, String).new(1.seconds)
+      store = Cache::MemCacheStore(String, String).new(1.seconds)
 
       value = store.fetch("foo") { "bar" }
       value.should eq("bar")
@@ -61,7 +61,7 @@ describe Cache do
     end
 
     it "fetch with expires_in from cache" do
-      store = Cache::MemcachedStore(String, String).new(1.seconds)
+      store = Cache::MemCacheStore(String, String).new(1.seconds)
 
       value = store.fetch("foo", expires_in: 1.hours) { "bar" }
       value.should eq("bar")
@@ -73,7 +73,7 @@ describe Cache do
     end
 
     it "don't fetch with expires_in from cache if expires" do
-      store = Cache::MemcachedStore(String, String).new(12.hours)
+      store = Cache::MemCacheStore(String, String).new(12.hours)
 
       value = store.fetch("foo", expires_in: 1.seconds) { "bar" }
       value.should eq("bar")
@@ -85,7 +85,7 @@ describe Cache do
     end
 
     it "write" do
-      store = Cache::MemcachedStore(String, String).new(12.hours)
+      store = Cache::MemCacheStore(String, String).new(12.hours)
       store.write("foo", "bar", expires_in: 1.minute)
 
       value = store.fetch("foo") { "bar" }
@@ -93,7 +93,7 @@ describe Cache do
     end
 
     it "read" do
-      store = Cache::MemcachedStore(String, String).new(12.hours)
+      store = Cache::MemCacheStore(String, String).new(12.hours)
       store.write("foo", "bar")
 
       value = store.read("foo")
@@ -101,7 +101,7 @@ describe Cache do
     end
 
     it "set a custom expires_in value for entry on write" do
-      store = Cache::MemcachedStore(String, String).new(12.hours)
+      store = Cache::MemCacheStore(String, String).new(12.hours)
       store.write("foo", "bar", expires_in: 1.second)
 
       sleep 2
@@ -111,7 +111,7 @@ describe Cache do
     end
 
     it "delete from cache" do
-      store = Cache::MemcachedStore(String, String).new(12.hours)
+      store = Cache::MemCacheStore(String, String).new(12.hours)
 
       value = store.fetch("foo") { "bar" }
       value.should eq("bar")
@@ -125,7 +125,7 @@ describe Cache do
     end
 
     it "deletes all items from the cache" do
-      store = Cache::MemcachedStore(String, String).new(12.hours)
+      store = Cache::MemCacheStore(String, String).new(12.hours)
 
       value = store.fetch("foo") { "bar" }
       value.should eq("bar")
@@ -138,7 +138,7 @@ describe Cache do
     end
 
     it "#exists?" do
-      store = Cache::MemcachedStore(String, String).new(12.hours)
+      store = Cache::MemCacheStore(String, String).new(12.hours)
 
       store.write("foo", "bar")
 
@@ -147,7 +147,7 @@ describe Cache do
     end
 
     it "#exists? expires" do
-      store = Cache::MemcachedStore(String, String).new(1.second)
+      store = Cache::MemCacheStore(String, String).new(1.second)
 
       store.write("foo", "bar")
 
@@ -157,7 +157,7 @@ describe Cache do
     end
 
     it "#increment" do
-      store = Cache::MemcachedStore(String, Int32).new(12.hours)
+      store = Cache::MemCacheStore(String, Int32).new(12.hours)
 
       store.write("num", 1)
       store.increment("num", 1)
@@ -168,7 +168,7 @@ describe Cache do
     end
 
     it "#decrement" do
-      store = Cache::MemcachedStore(String, Int32).new(12.hours)
+      store = Cache::MemCacheStore(String, Int32).new(12.hours)
 
       store.write("num", 2)
       store.decrement("num", 1)

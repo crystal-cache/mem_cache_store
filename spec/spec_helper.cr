@@ -1,2 +1,2 @@
 require "spec"
-require "../src/memcached_cache"
+require "../src/mem_cache_store"

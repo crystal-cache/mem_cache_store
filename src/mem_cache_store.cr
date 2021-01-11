@@ -5,14 +5,14 @@ module Cache
   # A cache store implementation which stores data in Memcached.
   #
   # ```crystal
-  # cache = Cache::MemcachedStore(String, String).new(expires_in: 1.minute)
+  # cache = Cache::MemCacheStore(String, String).new(expires_in: 1.minute)
   # cache.fetch("today") do
   #   Time.utc.day_of_week
   # end
   # ```
   #
   # This assumes Memcached was started with a default configuration, and is listening on `localhost:11211`.
-  struct MemcachedStore(K, V) < Store(K, V)
+  struct MemCacheStore(K, V) < Store(K, V)
     @cache : Memcached::Client
 
     def initialize(@expires_in : Time::Span, @cache = Memcached::Client.new)

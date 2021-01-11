@@ -1,7 +1,7 @@
-# Cache::MemcachedStore
+# Cache::MemCacheStore
 
-[![Build Status](https://travis-ci.org/crystal-cache/memcached_cache.svg?branch=main)](https://travis-ci.org/crystal-cache/memcached_cache)
-[![GitHub release](https://img.shields.io/github/release/crystal-cache/memcached_cache.svg)](https://github.com/crystal-cache/memcached_cache/releases)
+[![Build Status](https://travis-ci.org/crystal-cache/mem_cache_store.svg?branch=main)](https://travis-ci.org/crystal-cache/mem_cache_store)
+[![GitHub release](https://img.shields.io/github/release/crystal-cache/mem_cache_store.svg)](https://github.com/crystal-cache/mem_cache_store/releases)
 
 A [cache](https://github.com/crystal-cache/cache) store implementation that stores data in Memcached.
 
@@ -11,8 +11,8 @@ A [cache](https://github.com/crystal-cache/cache) store implementation that stor
 
    ```yaml
    dependencies:
-     memcached_cache:
-       github: crystal-cache/memcached_cache
+     mem_cache_store:
+       github: crystal-cache/mem_cache_store
    ```
 
 2. Run `shards install`
@@ -20,11 +20,11 @@ A [cache](https://github.com/crystal-cache/cache) store implementation that stor
 ## Usage
 
 ```crystal
-require "memcached_cache"
+require "mem_cache_store"
 ```
 
 ```crystal
-cache = Cache::MemcachedStore(String, String).new(expires_in: 1.minute)
+cache = Cache::MemCacheStore(String, String).new(expires_in: 1.minute)
 cache.fetch("today") do
   Time.utc.day_of_week
 end
@@ -38,12 +38,12 @@ If you need to connect to a remote server or a different port, try:
 
 ```crystal
 memcached = Memcached::Client.new(host: "10.0.1.1", port: 11211)
-cache = Cache::MemcachedStore(String, String).new(expires_in: 1.minute, cache: memcached)
+cache = Cache::MemCacheStore(String, String).new(expires_in: 1.minute, cache: memcached)
 ```
 
 ## Contributing
 
-1. Fork it (<https://github.com/crystal-cache/memcached_cache/fork>)
+1. Fork it (<https://github.com/crystal-cache/mem_cache_store/fork>)
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
