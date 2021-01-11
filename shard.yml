@@ -1,5 +1,5 @@
 name: mem_cache_store
-version: 0.2.0
+version: 0.2.1
 
 authors:
   - Anton Maminov <anton.maminov@gmail.com>
@@ -12,6 +12,6 @@ dependencies:
     github: comandeo/crystal-memcached
     branch: develop
 
-crystal: => 0.35.1
+crystal: ">= 0.35.0"
 
 license: MIT
