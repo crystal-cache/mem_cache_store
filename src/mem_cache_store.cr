@@ -4,7 +4,7 @@ require "memcached"
 module Cache
   # A cache store implementation which stores data in Memcached.
   #
-  # ```crystal
+  # ```
   # cache = Cache::MemCacheStore(String, String).new(expires_in: 1.minute)
   # cache.fetch("today") do
   #   Time.utc.day_of_week
