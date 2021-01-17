@@ -12,6 +12,11 @@ dependencies:
     github: comandeo/crystal-memcached
     branch: develop
 
+development_dependencies:
+  ameba:
+    github: crystal-ameba/ameba
+    branch: develop
+
 crystal: ">= 0.35.0"
 
 license: MIT
