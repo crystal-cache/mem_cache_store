@@ -1,5 +1,5 @@
 name: mem_cache_store
-version: 0.2.2
+version: 0.3.0
 
 authors:
   - Anton Maminov <anton.maminov@gmail.com>
@@ -7,7 +7,7 @@ authors:
 dependencies:
   cache:
     github: crystal-cache/cache
-    version: ">= 0.12.0"
+    version: ">= 0.14.0"
   memcached:
     github: comandeo/crystal-memcached
     branch: develop
@@ -15,8 +15,7 @@ dependencies:
 development_dependencies:
   ameba:
     github: crystal-ameba/ameba
-    branch: develop
 
-crystal: ">= 0.35.0"
+crystal: ">= 1.0.0"
 
 license: MIT
