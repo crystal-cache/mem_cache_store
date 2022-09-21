@@ -26,11 +26,11 @@ module Cache
       @cache.get(key)
     end
 
-    def delete(key : K) : Bool
+    private def delete_impl(key : K) : Bool
       @cache.delete(key)
     end
 
-    def exists?(key : K) : Bool
+    private def exists_impl(key : K) : Bool
       !!@cache.get(key)
     end
 
