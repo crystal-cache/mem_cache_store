@@ -1,5 +1,5 @@
 name: mem_cache_store
-version: 0.3.0
+version: 0.3.1
 
 authors:
   - Anton Maminov <anton.maminov@gmail.com>
@@ -7,7 +7,7 @@ authors:
 dependencies:
   cache:
     github: crystal-cache/cache
-    version: ">= 0.14.0"
+    version: "~> 0.15.1"
   memcached:
     github: comandeo/crystal-memcached
     branch: develop
