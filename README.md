@@ -38,7 +38,7 @@ If you need to connect to a remote server or a different port, try:
 
 ```crystal
 memcached = Memcached::Client.new(host: "10.0.1.1", port: 11211)
-cache = Cache::MemCacheStore(String, String).new(expires_in: 1.minute, cache: memcached)
+cache = Cache::MemCacheStore(String).new(expires_in: 1.minute, cache: memcached)
 ```
 
 ## Contributing
